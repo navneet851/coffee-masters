@@ -14,10 +14,12 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -34,8 +36,8 @@ import com.orderapp.coffeemasters.ui.theme.Primary
 fun MenuPage(dataManager: DataManager) {
     LazyColumn {
         items(dataManager.menu){category ->
-            Text(category.name,
-                color = OnPrimary,
+            Text(category.name, fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.padding(10.dp, 20.dp, 10.dp, 10.dp))
             category.products.forEach(){
                 Card(
@@ -91,7 +93,7 @@ fun ProductItem(product: Product, onAdd: (Product)->Unit) {
             }
             Button(
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Alternative1,
+                    containerColor = Primary,
                     contentColor = Color.White
                 ),
                 onClick = {

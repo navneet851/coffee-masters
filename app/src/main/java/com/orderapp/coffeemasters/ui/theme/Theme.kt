@@ -10,6 +10,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -18,7 +19,9 @@ import androidx.core.view.WindowCompat
 private val DarkColorScheme = darkColorScheme(
     primary = Primary,
     secondary = Secondary,
-    tertiary = Ternary
+    tertiary = Ternary,
+    onSurface = Color(0xFFDDB892),
+    onTertiary = Color(0xFFDDB892)
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -26,15 +29,14 @@ private val LightColorScheme = lightColorScheme(
     secondary = Secondary,
     tertiary = Ternary,
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
+
+    background = Primary,
     surface = Color(0xFFFFFBFE),
     onPrimary = Color.White,
     onSecondary = Color.White,
-    onTertiary = Color.White,
+    onTertiary = Color(0xFF43281C),
     onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    onSurface = Color(0xFF43281C),
 )
 
 @Composable
@@ -57,7 +59,7 @@ fun CoffeeMastersTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = Primary.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }

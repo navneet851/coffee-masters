@@ -22,9 +22,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Red
+import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.orderapp.coffeemasters.ui.theme.Alternative2
 import com.orderapp.coffeemasters.ui.theme.Primary
 
 
@@ -100,6 +103,10 @@ fun BottomNav(
     ) {
         list.forEachIndexed { index, screens ->
             NavigationBarItem(
+                colors = androidx.compose.material3.NavigationBarItemDefaults
+                    .colors(
+                        indicatorColor = Color.Black,
+                    ),
                 selected = selectedIndex == index,
                 onClick = {
                     navController.navigate(screens.route)
@@ -112,11 +119,11 @@ fun BottomNav(
                             screens.imageVectorFilled
                         } else screens.imageVectorOutlined,
                         contentDescription = screens.label,
-                        tint = Color.White
+                        tint = Alternative2
                     )
                 },
                 label = {
-                    Text(text = screens.label, color = Color.White)
+                    Text(text = screens.label, color = Alternative2)
 
                 },
 
